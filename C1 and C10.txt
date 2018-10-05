@@ -1,0 +1,13 @@
+Corel10K
+
+Accuracy: 71.6%
+Feature Vector Size: 7680
+
+
+Corel1K
+
+Accuracy: 88.7%
+Feature Vector Size: 49152
+
+
+Network Architecture: VGG16 https://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/

@@ -1,0 +1,13 @@
+A. Preprocessing/Training Algorithm:
+
+1) Split dataset into training set and testing set.
+2) Perform one pass of the training set images via VGG16 network and store the activations of the last convolution layer. These are the original features.
+3) Perform Principal Component Analysis to reduce the dimensions of the features.
+4) Perform intra-class clustering via the K-Means algorithm, with K number of clusters.
+5) For classification, train a Multi-Layer Perceptron for the features obtained in A.3
+
+B. Testing Algorithm:
+
+1) Predict the class of the test image using the classification model.
+2) Find the closest cluster centroid for the predicted class.
+3) Report the top five images from the closest cluster as the results.

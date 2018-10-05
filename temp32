@@ -1,0 +1,9 @@
+import numpy as np
+import cPickle
+
+from keras import applications
+from keras.datasets import cifar10
+
+from sklearn import preprocessing
+
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()

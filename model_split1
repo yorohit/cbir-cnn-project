@@ -1,0 +1,36 @@
+import cPickle
+from sklearn.model_selection import train_test_split
+import os
+import numpy as np
+
+def load_labels(folder):
+	with open(folder, 'rb') as f:
+		label = cPickle.load(f)
+	return label
+
+
+def split(X,Y):
+	X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
+	return X_train, X_test, y_train, y_test
+
+def load_images1(folder):
+	x = np.load(open(folder))
+	return x
+
+X = load_images1('/home/rohit/Image Datasets/VOC2012/temp/bottleneck_features_train.npy')
+Y = load_labels(os.path.join('/home/rohit/Image Datasets/VOC2012/annotation',"one_hot_label"))
+
+
+X=np.asarray(X)
+Y=np.asarray(Y)
+
+X_train, X_test, y_train, y_test = split(X,Y)
+
+np.save(open('/home/rohit/Image Datasets/VOC2012/temp/80-20split/bottleneck_features_train.npy', 'w'),X_train)
+np.save(open('/home/rohit/Image Datasets/VOC2012/temp/80-20split/bottleneck_labels_train.npy', 'w'),y_train)
+np.save(open('/home/rohit/Image Datasets/VOC2012/temp/80-20split/bottleneck_features_test.npy', 'w'),X_test)
+np.save(open('/home/rohit/Image Datasets/VOC2012/temp/80-20split/bottleneck_labels_test.npy', 'w'),y_test)
+
+
+print X_train.shape, y_train.shape
+print X_test.shape, y_test.shape
